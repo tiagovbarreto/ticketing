@@ -5,6 +5,8 @@ export * from "./errors/not-authorized-error";
 export * from "./errors/not-found-error";
 export * from "./errors/request-validation-error";
 
+export * from "./helpers/jwt-helper";
+
 export * from "./middewares/current-user";
 export * from "./middewares/error-handler";
 export * from "./middewares/require-auth";
