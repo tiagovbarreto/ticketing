@@ -1,5 +1,5 @@
 import { Document, Model, model, Schema } from "mongoose";
-import { JWTHelper } from "../helpers/jwt-helper";
+import { JWTHelper } from "@braves-corp/common";
 
 // An interface that describes the properties
 // that are nequired to create a new user

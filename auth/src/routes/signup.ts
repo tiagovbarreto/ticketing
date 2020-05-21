@@ -1,11 +1,11 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 
-import { validateRequest } from "../middewares/validate-request";
-
 import { User } from "../models/user";
-import { BadRequestError } from "../errors/bad-request-error";
-import { JWTHelper } from "../helpers/jwt-helper";
+
+import { validateRequest } from "@braves-corp/common";
+import { BadRequestError } from "@braves-corp/common";
+import { JWTHelper } from "@braves-corp/common";
 
 const router = express.Router();
 
