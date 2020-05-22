@@ -5,13 +5,13 @@ import jwt from "jsonwebtoken";
 const scryptAsync = promisify(scrypt);
 
 export class JWTHelper {
-  static async generateAuthToken(user: any) {
+  static async generateAuthToken(user: any, JWT_KEY: string) {
     const userJwt = jwt.sign(
       {
         id: user.id,
         email: user.email,
       },
-      process.env.JWT_KEY!
+      JWT_KEY
     );
 
     return userJwt;
