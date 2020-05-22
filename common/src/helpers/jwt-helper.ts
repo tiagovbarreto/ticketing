@@ -6,6 +6,8 @@ const scryptAsync = promisify(scrypt);
 
 export class JWTHelper {
   static async generateAuthToken(user: any) {
+    console.log("Payload:", user);
+    console.log("Secret: ", process.env.JWT_KEY!);
     const userJwt = jwt.sign(
       {
         id: user.id,
