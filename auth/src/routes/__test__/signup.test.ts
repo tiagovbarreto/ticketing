@@ -1,7 +1,7 @@
 import request from "supertest";
 import { app } from "../../app";
 
-describe("when signup", () => {
+describe("/api/users/signup", () => {
   const url: string = "/api/users/signup";
 
   let credential: any = {};

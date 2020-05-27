@@ -1,7 +1,7 @@
 import request from "supertest";
 import { app } from "../../app";
 
-describe("when signout", () => {
+describe("/api/users/signout", () => {
   const credential: any = {
     email: "test@test.com",
     password: "password",

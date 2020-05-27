@@ -1,7 +1,7 @@
 import request from "supertest";
 import { app } from "../../app";
 
-describe("when call current-user", () => {
+describe("/api/users/current-user", () => {
   const credentials: any = {
     email: "test@test.com",
     password: "password",
