@@ -8,7 +8,7 @@ describe("put /api/tickets/:id", () => {
   let title: any = "Concert";
   let price: any = 10;
 
-  const exec = () => {
+  const updateTicket = () => {
     return request(app)
       .put(`/api/tickets/${ticketId}`)
       .set("Cookie", token)
@@ -29,13 +29,13 @@ describe("put /api/tickets/:id", () => {
 
   it("should return a 404 if the ticket id does not exists", async () => {
     ticketId = "";
-    const res = await exec();
+    const res = await updateTicket();
     expect(res.status).toBe(404);
   });
 
   it("should return a 401 if the user is not authenticated", async () => {
     token = "";
-    const res = await exec();
+    const res = await updateTicket();
     expect(res.status).toBe(401);
   });
 
@@ -48,31 +48,31 @@ describe("put /api/tickets/:id", () => {
     ticketId = res.body.id;
     token = await global.signin();
 
-    const res1 = await exec();
+    const res1 = await updateTicket();
     expect(res1.status).toBe(401);
   });
 
   it("should return a 400 if no title is provided", async () => {
     title = undefined;
-    const res = await exec();
+    const res = await updateTicket();
     expect(res.status).toBe(400);
   });
 
   it("should return a 400 if no valid title is provided", async () => {
     title = "";
-    const res = await exec();
+    const res = await updateTicket();
     expect(res.status).toBe(400);
   });
 
   it("should return a 400 if no price is provided", async () => {
     price = undefined;
-    const res = await exec();
+    const res = await updateTicket();
     expect(res.status).toBe(400);
   });
 
   it("should return a 400 if no valid price is provided", async () => {
     price = -10;
-    const res = await exec();
+    const res = await updateTicket();
     expect(res.status).toBe(400);
   });
 
@@ -84,7 +84,7 @@ describe("put /api/tickets/:id", () => {
     price = 15;
     ticketId = res.body.id;
 
-    const res1 = await exec();
+    const res1 = await updateTicket();
     expect(res1.status).toBe(200);
     expect(res1.body.title).toBe(title);
     expect(res1.body.price).toBe(price);
