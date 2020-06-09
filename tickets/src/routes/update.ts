@@ -1,6 +1,9 @@
 import { Request, Response, Router } from "express";
 import { body } from "express-validator";
 import { Ticket } from "../models/ticket";
+import { TicketUpdatedPublisher } from "../events/publishers/ticket-updated-publisher";
+import { natsWrapper } from "../nats-wrapper";
+
 import {
   requireAuth,
   NotFoundError,
@@ -35,6 +38,14 @@ router.put(
 
     ticket.set({ title, price });
     ticket.save();
+
+    const publisher = new TicketUpdatedPublisher(natsWrapper.client);
+    await publisher.publish({
+      id: ticket.id,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId,
+    });
 
     res.status(200).send(ticket);
   }

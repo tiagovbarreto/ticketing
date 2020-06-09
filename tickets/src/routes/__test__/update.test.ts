@@ -1,6 +1,7 @@
 import request from "supertest";
 import { app } from "../../app";
 import mongoose from "mongoose";
+import { natsWrapper } from "../../nats-wrapper";
 
 describe("put /api/tickets/:id", () => {
   let ticketId: any;
@@ -88,5 +89,21 @@ describe("put /api/tickets/:id", () => {
     expect(res1.status).toBe(200);
     expect(res1.body.title).toBe(title);
     expect(res1.body.price).toBe(price);
+  });
+
+  it("should publish an event", async () => {
+    const res = await createTicket();
+    expect(res.status).toBe(201);
+
+    title = "Rock Concert";
+    price = 15;
+    ticketId = res.body.id;
+
+    const res1 = await updateTicket();
+    expect(res1.status).toBe(200);
+    expect(res1.body.title).toBe(title);
+    expect(res1.body.price).toBe(price);
+
+    expect(natsWrapper.client.publish).toHaveBeenCalled();
   });
 });

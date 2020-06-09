@@ -19,15 +19,6 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: tb/tickets
-      #- image: us.gcr.io/ticketing-dev-276403/auth
-      context: tickets
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: "src/**/*.ts"
-            dest: .
     - image: tb/client
       #- image: us.gcr.io/ticketing-dev-276403/auth
       context: client
@@ -36,4 +27,22 @@ build:
       sync:
         manual:
           - src: "**/*.js"
+            dest: .
+    - image: tb/tickets
+      #- image: us.gcr.io/ticketing-dev-276403/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: tb/orders
+      #- image: us.gcr.io/ticketing-dev-276403/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
             dest: .
