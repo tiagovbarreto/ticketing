@@ -22,7 +22,7 @@ const orderSchema = new Schema(
       required: true,
     },
     status: {
-      type: String,
+      type: Number,
       required: true,
       enum: Object.values(OrderStatus),
       default: OrderStatus.CREATED,

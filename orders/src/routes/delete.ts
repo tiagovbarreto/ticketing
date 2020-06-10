@@ -6,6 +6,8 @@ import {
   NotAuthorizedError,
   OrderStatus,
 } from "@braves-corp/common";
+import { OrderCancelledPublisher } from "../events/publishers/order-created-publisher";
+import { natsWrapper } from "../nats-wrapper";
 
 const router = Router();
 
@@ -26,6 +28,14 @@ router.delete(
 
     order.status = OrderStatus.CANCELLED;
     await order.save();
+
+    const publisher = new OrderCancelledPublisher(natsWrapper.client);
+    await publisher.publish({
+      id: order.id,
+      ticket: {
+        id: order.ticket.id,
+      },
+    });
 
     res.status(204).send(order);
   }

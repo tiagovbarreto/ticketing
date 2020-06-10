@@ -3,6 +3,7 @@ import { app } from "../../app";
 import { Ticket, ITicketDocument } from "../../models/ticket";
 import { Types } from "mongoose";
 import { OrderStatus } from "../../models/order";
+import { natsWrapper } from "../../nats-wrapper";
 
 const buildTicket = async () => {
   const ticket = Ticket.build({
@@ -53,7 +54,7 @@ describe("When deleting an especific order", () => {
     expect(res1.status).toBe(204);
 
     const res2 = await requestOrderById(userToken, order.id);
-    expect(parseInt(res2.body.status)).toBe(OrderStatus.CANCELLED);
+    expect(res2.body.status).toBe(OrderStatus.CANCELLED);
   });
 
   it("Should throw an error if the user try to delete an order that does not exist", async () => {
@@ -79,5 +80,22 @@ describe("When deleting an especific order", () => {
     expect(res1.status).toBe(401);
   });
 
-  it.todo("Should emits an order cancelled event");
+  it("Should emits an order cancelled event", async () => {
+    const ticket = await buildTicket();
+
+    const userToken = await global.signin();
+
+    const res = await requestOrderCreation(userToken, ticket);
+    expect(res.status).toBe(201);
+
+    const { body: order } = res;
+
+    const res1 = await requestOrderDelete(userToken, order.id);
+    expect(res1.status).toBe(204);
+
+    const res2 = await requestOrderById(userToken, order.id);
+    expect(res2.body.status).toBe(OrderStatus.CANCELLED);
+
+    expect(natsWrapper.client.publish).toHaveBeenCalled();
+  });
 });
