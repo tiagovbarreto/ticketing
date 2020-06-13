@@ -7,7 +7,10 @@ interface ITicketAttributes {
   userId: string;
 }
 
-interface ITicketDocument extends ITicketAttributes, Document {
+interface ITicketDocument extends Document {
+  title: string;
+  price: number;
+  userId: string;
   version: number;
 }
 

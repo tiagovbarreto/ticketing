@@ -1,5 +1,5 @@
-import { Publisher, OrderCreatedEvent, Subjects } from "@braves-corp/common";
+import { Publisher, OrderCancelledEvent, Subjects } from "@braves-corp/common";
 
-export class OrderCreatedPublisher extends Publisher<OrderCreatedEvent> {
-  subject: Subjects.OrderCreated = Subjects.OrderCreated;
+export class OrderCancelledPublisher extends Publisher<OrderCancelledEvent> {
+  subject: Subjects.OrderCancelled = Subjects.OrderCancelled;
 }
