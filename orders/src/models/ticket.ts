@@ -17,6 +17,10 @@ interface ITicketDocument extends Document {
 
 interface ITicketModel extends Model<ITicketDocument> {
   build(attributes: ITicketAttributes): ITicketDocument;
+  findByEvent(data: {
+    id: string;
+    version: number;
+  }): Promise<ITicketDocument | null>;
 }
 
 const ticketSchema = new Schema(
@@ -48,6 +52,13 @@ ticketSchema.statics.build = (attributes: ITicketAttributes) => {
     _id: attributes.id,
     title: attributes.title,
     price: attributes.price,
+  });
+};
+
+ticketSchema.statics.findByEvent = (data: { id: string; version: number }) => {
+  return Ticket.findOne({
+    _id: data.id,
+    version: data.version - 1,
   });
 };
 
