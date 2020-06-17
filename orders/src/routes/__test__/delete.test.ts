@@ -7,6 +7,7 @@ import { natsWrapper } from "../../nats-wrapper";
 
 const buildTicket = async () => {
   const ticket = Ticket.build({
+    id: Types.ObjectId().toHexString(),
     title: "concert",
     price: 20,
   });

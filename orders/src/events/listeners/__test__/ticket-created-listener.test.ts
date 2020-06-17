@@ -27,27 +27,29 @@ const setup = async () => {
   return { listener, data, msg };
 };
 
-it("Should creates and saves a ticket", async () => {
-  const { listener, data, msg } = await setup();
+describe("When calling ticket create listener", () => {
+  it("Should creates and saves a ticket", async () => {
+    const { listener, data, msg } = await setup();
 
-  // Call onMessage function with the data object + message object
-  await listener.onMessage(data, msg);
+    // Call onMessage function with the data object + message object
+    await listener.onMessage(data, msg);
 
-  // Write assertions to make sure a ticket was created
-  const ticket = await Ticket.findById(data.id);
+    // Write assertions to make sure a ticket was created
+    const ticket = await Ticket.findById(data.id);
 
-  expect(ticket).toBeDefined();
-  expect(ticket!.title).toBe(data.title);
-  expect(ticket!.price).toBe(data.price);
-});
+    expect(ticket).toBeDefined();
+    expect(ticket!.title).toBe(data.title);
+    expect(ticket!.price).toBe(data.price);
+  });
 
-it("Should acks the messag", async () => {
-  const { listener, data, msg } = await setup();
+  it("Should acks the messag", async () => {
+    const { listener, data, msg } = await setup();
 
-  // Call onMessage function with the data object + message object
-  await listener.onMessage(data, msg);
+    // Call onMessage function with the data object + message object
+    await listener.onMessage(data, msg);
 
-  // Write assertions to make sure a ticket was created
-  const ticket = await Ticket.findById(data.id);
-  expect(msg.ack).toHaveBeenCalled();
+    // Write assertions to make sure a ticket was created
+    await Ticket.findById(data.id);
+    expect(msg.ack).toHaveBeenCalled();
+  });
 });

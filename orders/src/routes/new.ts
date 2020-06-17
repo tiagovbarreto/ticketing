@@ -10,7 +10,7 @@ import { body } from "express-validator";
 import { Order } from "../models/order";
 import { Ticket } from "../models/ticket";
 import { natsWrapper } from "../nats-wrapper";
-import { OrderCreatedPublisher } from "../events/publishers/order-cancelled-publisher";
+import { OrderCreatedPublisher } from "../events/publishers/order-created-publisher";
 
 const router = express.Router();
 
@@ -56,6 +56,7 @@ router.post(
     const publisher = new OrderCreatedPublisher(natsWrapper.client);
     await publisher.publish({
       id: order.id,
+      version: order.version,
       status: order.status,
       userId: order.userId,
       expiresAt: order.expiresAt.toISOString(),

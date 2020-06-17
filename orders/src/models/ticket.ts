@@ -1,4 +1,5 @@
 import { Document, model, Model, Schema } from "mongoose";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 import { Order, OrderStatus } from "./order";
 
 interface ITicketAttributes {
@@ -44,15 +45,7 @@ const ticketSchema = new Schema(
 );
 
 ticketSchema.set("versionKey", "version");
-//ticketSchema.plugin(updateIfCurrentPlugin);
-
-ticketSchema.pre("save", function (done) {
-  //@ts-ignore
-  this.$where = {
-    version: this.get("version") - 1,
-  };
-  done();
-});
+ticketSchema.plugin(updateIfCurrentPlugin);
 
 ticketSchema.statics.build = (attributes: ITicketAttributes) => {
   return new Ticket({

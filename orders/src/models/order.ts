@@ -9,7 +9,9 @@ interface IOrderAttributes {
   ticket: ITicketDocument;
 }
 
-interface IOrderDocument extends IOrderAttributes, Document {}
+interface IOrderDocument extends IOrderAttributes, Document {
+  version: number;
+}
 
 interface IOrderModel extends Model<IOrderDocument> {
   build(attributes: IOrderAttributes): IOrderDocument;

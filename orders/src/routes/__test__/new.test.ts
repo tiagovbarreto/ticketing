@@ -1,13 +1,13 @@
 import request from "supertest";
 import { app } from "../../app";
-import mongoose from "mongoose";
+import { Types } from "mongoose";
 import { Order, OrderStatus } from "../../models/order";
 import { Ticket } from "../../models/ticket";
 import { natsWrapper } from "../../nats-wrapper";
 
 describe("When add new order", () => {
   const url = "/api/orders";
-  const ticketId = mongoose.Types.ObjectId();
+  const ticketId = Types.ObjectId();
 
   it("Should return an error if the ticket does not exist", async () => {
     const res = await request(app)
@@ -19,6 +19,7 @@ describe("When add new order", () => {
 
   it("Should return an error if the ticket is already reserved", async () => {
     const ticket = Ticket.build({
+      id: Types.ObjectId().toHexString(),
       title: "concert",
       price: 20,
     });
@@ -44,6 +45,7 @@ describe("When add new order", () => {
 
   it("Should successulfuly reserve a ticket", async () => {
     const ticket = Ticket.build({
+      id: Types.ObjectId().toHexString(),
       title: "concert",
       price: 20,
     });
@@ -61,6 +63,7 @@ describe("When add new order", () => {
 
   it("Should emits an order created event", async () => {
     const ticket = Ticket.build({
+      id: Types.ObjectId().toHexString(),
       title: "concert",
       price: 20,
     });
