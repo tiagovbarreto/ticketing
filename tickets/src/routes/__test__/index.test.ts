@@ -1,7 +1,7 @@
 import request from "supertest";
 import { app } from "../../app";
 
-describe("get /", () => {
+describe("When fetching all tickets", () => {
   const createTicket = async () => {
     return request(app)
       .post("/api/tickets")
@@ -9,7 +9,7 @@ describe("get /", () => {
       .send({ title: "My ticket", price: 10 });
   };
 
-  it("should return all tickets", async () => {
+  it("Should return all tickets", async () => {
     await createTicket();
     await createTicket();
     await createTicket();

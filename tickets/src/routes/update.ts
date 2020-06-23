@@ -9,6 +9,7 @@ import {
   NotFoundError,
   NotAuthorizedError,
   validateRequest,
+  BadRequestError,
 } from "@braves-corp/common";
 
 const router = Router();
@@ -30,6 +31,10 @@ router.put(
 
     if (!ticket) {
       throw new NotFoundError();
+    }
+
+    if (ticket.orderId) {
+      throw new BadRequestError("Can not edit a reserved ticket.");
     }
 
     if (ticket.userId !== req.currentUser!.id) {
