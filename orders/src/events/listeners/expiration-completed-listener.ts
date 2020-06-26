@@ -22,6 +22,10 @@ export class ExpirationCompletedListener extends Listener<
       throw new Error("Order not found.");
     }
 
+    if (order.status === OrderStatus.RESERVED) {
+      return msg.ack();
+    }
+
     order.set({ status: OrderStatus.CANCELLED });
     await order.save();
 

@@ -27,7 +27,7 @@ const setup = async () => {
   return { listener, data, msg };
 };
 
-describe("When calling ticket create listener", () => {
+describe("When receiving a create ticket event", () => {
   it("Should creates and saves a ticket", async () => {
     const { listener, data, msg } = await setup();
 
