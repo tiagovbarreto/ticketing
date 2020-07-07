@@ -1,9 +1,9 @@
-import { Document, model, Model, Schema } from 'mongoose';
-import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
-import { OrderStatus } from '@braves-corp/common';
+import { Document, model, Model, Schema } from "mongoose";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
+import { OrderStatus } from "@braves-corp/common";
 
 interface IOrderAttributes {
-  id: number;
+  id: string;
   price: number;
   status: OrderStatus;
   userId: string;
@@ -47,7 +47,7 @@ const orderSchema = new Schema(
   }
 );
 
-orderSchema.set('versionKey', 'version');
+orderSchema.set("versionKey", "version");
 orderSchema.plugin(updateIfCurrentPlugin);
 
 orderSchema.statics.build = (attributes: IOrderAttributes) => {
@@ -60,6 +60,6 @@ orderSchema.statics.build = (attributes: IOrderAttributes) => {
   });
 };
 
-const Order = model<IOrderDocument, IOrderModel>('Order', orderSchema);
+const Order = model<IOrderDocument, IOrderModel>("Order", orderSchema);
 
 export { Order, OrderStatus };
