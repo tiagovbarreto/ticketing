@@ -1,4 +1,5 @@
 import { Document, model, Model, Schema } from "mongoose";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 import { OrderStatus } from "@braves-corp/common";
 import { ITicketDocument } from "./ticket";
 
@@ -47,6 +48,9 @@ const orderSchema = new Schema(
     },
   }
 );
+
+orderSchema.set("versionKey", "version");
+orderSchema.plugin(updateIfCurrentPlugin);
 
 orderSchema.statics.build = (attributes: IOrderAttributes) => {
   return new Order(attributes);

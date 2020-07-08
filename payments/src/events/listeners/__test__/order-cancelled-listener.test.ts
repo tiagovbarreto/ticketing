@@ -38,9 +38,12 @@ describe("When receiving an order cancelled event", () => {
     const { listener, data, msg } = await setup();
 
     await listener.onMessage(data, msg);
-    const order = await Order.findById(data.id);
+    const updatedOrder = await Order.findOne({
+      _id: data.id,
+      version: data.version,
+    });
 
-    expect(order!.status).toBe(OrderStatus.CANCELLED);
+    expect(updatedOrder!.status).toBe(OrderStatus.CANCELLED);
   });
 
   it("Should acks the message", async () => {
