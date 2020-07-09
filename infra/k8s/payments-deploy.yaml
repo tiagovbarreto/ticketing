@@ -18,20 +18,25 @@ spec:
           image: tb/payments
           env:
             - name: NATS_CLUSTER_ID
-              value: 'ticketing'
+              value: "ticketing"
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
             - name: NATS_URL
-              value: 'http://nats-service:4222'
+              value: "http://nats-service:4222"
             - name: MONGO_URI
-              value: 'mongodb://payments-mongo-service:27017/payments'
+              value: "mongodb://payments-mongo-service:27017/payments"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+            - name: STRIPE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: stripe-secret
+                  key: STRIPE_KEY
 ---
 apiVersion: v1
 kind: Service
