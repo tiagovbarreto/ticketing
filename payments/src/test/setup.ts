@@ -5,7 +5,7 @@ import { JWTHelper } from "@braves-corp/common";
 declare global {
   namespace NodeJS {
     interface Global {
-      signin(): Promise<string[]>;
+      signin(id?: string): Promise<string[]>;
     }
   }
 }
@@ -41,10 +41,10 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
-global.signin = async () => {
+global.signin = async (id?: string) => {
   //Buil a JWT payload {id, email}
   const payload = {
-    id: new mongoose.Types.ObjectId().toHexString(),
+    id: id || new mongoose.Types.ObjectId().toHexString(),
     email: "test@test.com",
   };
 
