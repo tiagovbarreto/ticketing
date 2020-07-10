@@ -1,5 +1,4 @@
 import { Document, model, Model, Schema } from "mongoose";
-import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface IPaymentAttributes {
   orderId: string;
@@ -8,22 +7,22 @@ interface IPaymentAttributes {
 
 interface IPaymentDocument extends Document {
   orderId: string;
-  price: number;
+  stripeId: string;
 }
 
 interface IPaymentModel extends Model<IPaymentDocument> {
   build(attributes: IPaymentAttributes): IPaymentDocument;
 }
 
-const orderSchema = new Schema(
+const paymentSchema = new Schema(
   {
     orderId: {
-      type: String,
       required: true,
+      type: String,
     },
     stripeId: {
-      type: String,
       required: true,
+      type: String,
     },
   },
   {
@@ -36,10 +35,16 @@ const orderSchema = new Schema(
   }
 );
 
-orderSchema.statics.build = (attributes: IPaymentAttributes) => {
-  return new Payment({ attributes });
+paymentSchema.statics.build = (attributes: IPaymentAttributes) => {
+  return new Payment({
+    orderId: attributes.orderId,
+    stripeId: attributes.stripeId,
+  });
 };
 
-const Payment = model<IPaymentDocument, IPaymentModel>("Payment", orderSchema);
+const Payment = model<IPaymentDocument, IPaymentModel>(
+  "Payment",
+  paymentSchema
+);
 
 export { Payment };
