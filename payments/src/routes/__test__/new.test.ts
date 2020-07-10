@@ -3,6 +3,7 @@ import { app } from "../../app";
 import { Order, OrderStatus } from "../../models/order";
 import { Types } from "mongoose";
 import { stripe } from "../../stripe";
+import { Payment } from "../../models/payment";
 
 jest.mock("../../stripe");
 
@@ -84,4 +85,26 @@ describe("When purchasing an order", () => {
     expect(chargeOptions.amount).toEqual(10 * 100);
     expect(chargeOptions.currency).toEqual("usd");
   });
+
+  /*  it("Should create a payments.", async () => {
+    const order = await buildOrder();
+
+    orderId = order.id;
+    cookie = await global.signin(userId);
+    const res = await paymentRequest();
+
+    expect(res.status).toBe(201);
+
+    const chargeResult = await (stripe.charges.create as jest.Mock).mock
+      .results[0].value;
+
+    const payment = await Payment.findOne({
+      orderId,
+      stripeId: chargeResult.id,
+    });
+
+    expect(payment).toBeDefined();
+    expect(payment!.orderId).toEqual(order.id);
+    expect(payment!.stripeId).toEqual(chargeResult.id);
+  });*/
 });
