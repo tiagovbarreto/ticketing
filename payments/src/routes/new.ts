@@ -9,6 +9,7 @@ import {
 } from "@braves-corp/common";
 import { body } from "express-validator";
 import { Order } from "../models/order";
+import { stripe } from "../stripe";
 
 const router = Router();
 
@@ -34,7 +35,13 @@ router.post(
       throw new BadRequestError("Cannot pay for a cancelled order.");
     }
 
-    res.status(200).send({ success: true });
+    await stripe.charges.create({
+      currency: "usd",
+      amount: order.price * 100,
+      source: token,
+    });
+
+    res.status(201).send({ success: true });
   }
 );
 

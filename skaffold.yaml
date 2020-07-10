@@ -17,16 +17,16 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.ts'
+          - src: "src/**/*.ts"
             dest: .
     - image: tb/client
-      #- image: us.gcr.io/ticketing-dev-276403/auth
+      #- image: us.gcr.io/ticketing-dev-276403/client
       context: client
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: '**/*.js'
+          - src: "**/*.js"
             dest: .
     - image: tb/tickets
       #- image: us.gcr.io/ticketing-dev-276403/tickets
@@ -35,7 +35,7 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.ts'
+          - src: "src/**/*.ts"
             dest: .
     - image: tb/orders
       #- image: us.gcr.io/ticketing-dev-276403/orders
@@ -44,7 +44,7 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.ts'
+          - src: "src/**/*.ts"
             dest: .
     - image: tb/expiration
       #- image: us.gcr.io/ticketing-dev-276403/expiration
@@ -53,7 +53,7 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.ts'
+          - src: "src/**/*.ts"
             dest: .
     - image: tb/payments
       #- image: us.gcr.io/ticketing-dev-276403/payments
@@ -62,5 +62,5 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.ts'
+          - src: "src/**/*.ts"
             dest: .

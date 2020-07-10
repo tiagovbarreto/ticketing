@@ -2,11 +2,14 @@ import request from "supertest";
 import { app } from "../../app";
 import { Order, OrderStatus } from "../../models/order";
 import { Types } from "mongoose";
+import { stripe } from "../../stripe";
 
-let token: any;
+jest.mock("../../stripe");
+
 let orderId: any;
-let status: any;
 let userId: any;
+let status: any;
+let cookie: any;
 
 const buildOrder = async () => {
   const order = Order.build({
@@ -24,9 +27,9 @@ const buildOrder = async () => {
 const paymentRequest = async () => {
   const res = await request(app)
     .post("/api/payments")
-    .set("Cookie", token)
+    .set("Cookie", cookie)
     .send({
-      token: "anytoken",
+      token: "tok_visa",
       orderId: orderId,
     });
 
@@ -35,7 +38,7 @@ const paymentRequest = async () => {
 beforeEach(async () => {
   orderId = Types.ObjectId().toHexString();
   userId = Types.ObjectId().toHexString();
-  token = await global.signin();
+  cookie = await global.signin();
   status = OrderStatus.CREATED;
 });
 
@@ -60,9 +63,25 @@ describe("When purchasing an order", () => {
     const order = await buildOrder();
 
     orderId = order.id;
-    token = await global.signin(userId);
+    cookie = await global.signin(userId);
     const res = await paymentRequest();
 
     expect(res.status).toBe(400);
+  });
+
+  it("Should return a 201 with valid inputs.", async () => {
+    const order = await buildOrder();
+
+    orderId = order.id;
+    cookie = await global.signin(userId);
+    const res = await paymentRequest();
+
+    expect(res.status).toBe(201);
+
+    const chargeOptions = (stripe.charges.create as jest.Mock).mock.calls[0][0];
+
+    expect(chargeOptions.source).toEqual("tok_visa");
+    expect(chargeOptions.amount).toEqual(10 * 100);
+    expect(chargeOptions.currency).toEqual("usd");
   });
 });
