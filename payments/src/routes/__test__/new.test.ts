@@ -86,7 +86,7 @@ describe("When purchasing an order", () => {
     expect(chargeOptions.currency).toEqual("usd");
   });
 
-  it("Should create a payments.", async () => {
+  it("Should create a payment.", async () => {
     const order = await buildOrder();
 
     orderId = order.id;
