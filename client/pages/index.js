@@ -8,11 +8,8 @@ const IndexPage = ({ currentUser }) => {
   );
 };
 
-IndexPage.getInitialProps = async (context) => {
-  const client = axiosHelper(context);
-  const { data } = await client.get("/api/users/current-user");
-
-  return data;
+IndexPage.getInitialProps = async (context, client, currentUser) => {
+  return {};
 };
 
 export default IndexPage;
