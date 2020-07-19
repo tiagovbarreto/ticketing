@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@braves-corp/common": "^1.0.26",
+    "@braves-corp/common": "^1.0.29",
     "@types/bull": "^3.14.0",
     "bull": "^3.14.0",
     "node-nats-streaming": "^0.3.2",

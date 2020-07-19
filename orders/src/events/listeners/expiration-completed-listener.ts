@@ -22,7 +22,7 @@ export class ExpirationCompletedListener extends Listener<
       throw new Error("Order not found.");
     }
 
-    if (order.status === OrderStatus.RESERVED) {
+    if (order.status === OrderStatus.COMPLETED) {
       return msg.ack();
     }
 

@@ -19,7 +19,7 @@ export class PaymentCreatedListener extends Listener<PaymentCreatedEvent> {
       throw new Error("Order not found.");
     }
 
-    order.set({ status: OrderStatus.PAYED });
+    order.set({ status: OrderStatus.COMPLETED });
     await order.save();
 
     //TODO should emit a order-updated event
