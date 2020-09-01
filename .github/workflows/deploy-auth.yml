@@ -2,10 +2,10 @@ name: deploy-auth
 
 on:
   push:
-    branches: 
+    branches:
       - master
     paths:
-      - 'auth/**'
+      - "auth/**"
 
 jobs:
   build:
@@ -14,8 +14,7 @@ jobs:
       - uses: action/checkout@v2
       - run: cd auth && docker build -t tiagovalentimbarreto/auth
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        env: 
+        env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push tiagovalentimbarreto/auth
-         
