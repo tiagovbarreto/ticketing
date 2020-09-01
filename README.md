@@ -93,7 +93,11 @@ doctl auth init
 2. Enter the token from the previus step
 
 #### Set cluster to kubectl
-1. Run the command: 
+1. If using snap,  grant access to the doctl:kube-config plug to use this command with: 
+```sh
+sudo snap connect doctl:kube-config
+```
+2. Run the command: 
 ```sh
 doctl kubernetes cluster kubeconfig save <name of your cluster> 
 ```
