@@ -102,6 +102,7 @@ sudo snap connect doctl:kube-config
 doctl kubernetes cluster kubeconfig save <name of your cluster> 
 ```
 #### Create secrets
+The secrets are used in the payment service. Look in to payments-deploy.yml file.
 - jwt-secret
 ```sh
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=<your jwt secret>
