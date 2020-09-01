@@ -77,3 +77,23 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 
 ### Install doctl 
 doctl can be installed via snap on ubuntu. See also official docs: https://github.com/digitalocean/doctl
+
+### Connect to Digital Ocean
+#### Generate a connection token.
+1. Go to API in the sidebar menu
+2. Click the Generate new Token button
+3. Set the token name
+4. Click the Generate Token button
+
+#### Authenticate
+1. Go to terminal end run the command:
+```sh
+doctl auth init
+```
+2. Enter the token from the previus step
+
+#### Set cluster to kubectl
+1. Run the command: 
+```sh
+doctl kubernetes cluster kubeconfig save <name of your cluster> 
+```
