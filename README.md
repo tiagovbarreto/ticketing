@@ -101,3 +101,14 @@ sudo snap connect doctl:kube-config
 ```sh
 doctl kubernetes cluster kubeconfig save <name of your cluster> 
 ```
+#### Create secrets
+- jwt-secret
+```sh
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=<your jwt secret>
+```
+- stripe-secret
+```sh
+kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=<your stripe secret>
+```
+PS:. You must create a stripe account -> www.stripe.com. After that you can create you stripe secret in Developers/API Keys in the menubar.
+
