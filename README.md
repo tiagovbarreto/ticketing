@@ -1,10 +1,12 @@
 # ticketing
 
-## Minikube Setup on Linux
+## Local environment setup
+
+### Minikube Setup on Linux
 
 These instructions should be valid for Debian / Ubuntu / Mint Linux distributions. Your experience may vary if using an RHEL / Arch / Other distribution or non desktop distro like Ubuntu server, or lightweight distros which may omit many expected tools.
 
-## Install VirtualBox:
+### Install VirtualBox:
 
 Find your Linux distribution and download the .deb package, using a graphical installer here should be sufficient. If you use a package manager like apt to install from your terminal, you will likely get a fairly out of date version.
 
@@ -21,7 +23,7 @@ As an alternative you can use (or maybe you have to use) KVM instead of VirtualB
 https://computingforgeeks.com/install-kvm-centos-rhel-ubuntu-debian-sles-arch/
 
 
-## Install Kubectl
+### Install Kubectl
 
 In your terminal run the following:
 
@@ -46,7 +48,7 @@ See also official docs:
 https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux
 
 
-## Install Minikube
+### Install Minikube
 
 In your terminal run the following:
 ```sh
@@ -70,3 +72,7 @@ minikube start
 See also official docs:
 
 https://kubernetes.io/docs/tasks/tools/install-minikube/
+
+## Deploy setup to Digital Ocean
+
+Install doctl via snap on ubuntu
