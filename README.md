@@ -75,4 +75,5 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 
 ## Deploy setup to Digital Ocean
 
-Install doctl via snap on ubuntu
+### Install doctl 
+doctl can be installed via snap on ubuntu. See also official docs: https://github.com/digitalocean/doctl
