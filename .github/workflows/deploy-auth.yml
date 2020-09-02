@@ -18,7 +18,7 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push tiagovalentimbarreto/ticketing-auth
-      - uses: digitalocean/action-dotcl@v2
+      - uses: digitalocean/action-doctl@v2
         with:
           tocke: ${{ secrets.DIGITAL_OCEAN_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save ticketing-cluster
