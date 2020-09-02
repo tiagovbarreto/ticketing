@@ -15,7 +15,7 @@ spec:
       containers:
         - name: orders
           #image: us.gcr.io/ticketing-dev-276403/orders
-          image: tb/orders
+          image: tiagovalentimbarreto/ticketing-orders
           env:
             - name: NATS_CLUSTER_ID
               value: "ticketing"

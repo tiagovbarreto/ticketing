@@ -15,7 +15,7 @@ spec:
       containers:
         - name: payments
           #image: us.gcr.io/ticketing-dev-276403/payments
-          image: tb/payments
+          image: tiagovalentimbarreto/ticketing-payments
           env:
             - name: NATS_CLUSTER_ID
               value: "ticketing"

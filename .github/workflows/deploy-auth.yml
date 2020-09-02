@@ -13,10 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd auth && docker build -t tiagovalentimbarreto/ticketing-auth .
-      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - uses: actions/checkout@v1
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - run: docker push tiagovalentimbarreto/ticketing-auth
       - uses: digitalocean/action-doctl@v2
         with:
