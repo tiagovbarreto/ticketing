@@ -5,11 +5,11 @@ export default ({ req }) => {
     //We are in the server
     return axios.create({
       //baseURL: "http://nginx-ingress-controller.kube-system.svc.cluster.local",
-      baseURL: "http://www.ticketing.host/",
+      baseURL: "http://www.ticketing.host",
       headers: req.headers,
     });
   } else {
     //We are in the browser
-    return axios.create({ baseURL: "/" });
+    return axios.create({ baseURL: "http://wwww.ticketing.host" });
   }
 };
