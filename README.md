@@ -116,5 +116,5 @@ PS:. You must create a stripe account -> www.stripe.com. After that you can crea
 #### Setup Ingress
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.35.0/deploy/static/provider/do/deploy.yaml
-
+```
 
