@@ -24,7 +24,7 @@ export default () => {
     <form onSubmit={onSubmit}>
       <h1>Signin</h1>
       <div className="form-group">
-        <label>Email adress:</label>
+        <label>Email adress</label>
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -32,7 +32,7 @@ export default () => {
         />
       </div>
       <div className="form-group">
-        <label>Password:</label>
+        <label>Password</label>
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
