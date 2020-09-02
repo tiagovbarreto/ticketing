@@ -5,7 +5,7 @@ import { OrderCreatedListener } from "./events/listener/order-created-listener";
 import { OrderCancelledListener } from "./events/listener/order-cancelled-listener";
 
 const start = async () => {
-  console.log("Starting tickets service ... 1");
+  console.log("Starting tickets service");
   //console.log('process.env.JWT_KEY=', process.env.JWT_KEY);
   if (!process.env.JWT_KEY) {
     throw new Error("JWT must be defined.");

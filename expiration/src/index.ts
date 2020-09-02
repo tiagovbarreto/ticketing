@@ -2,7 +2,7 @@ import { natsWrapper } from "./nats-wrapper";
 import { OrderCreatedListener } from "./events/listeners/order-created-listener";
 
 const start = async () => {
-  console.log("Starting expiration service ... 1");
+  console.log("Starting expiration service");
   //console.log('process.env.JWT_KEY=', process.env.JWT_KEY);
 
   if (!process.env.NATS_CLUSTER_ID) {
