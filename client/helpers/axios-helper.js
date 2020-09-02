@@ -10,6 +10,6 @@ export default ({ req }) => {
     });
   } else {
     //We are in the browser
-    return axios.create({ baseURL: "/" });
+    return axios.create({ baseURL: "http://wwww.ticketing.host" });
   }
 };
