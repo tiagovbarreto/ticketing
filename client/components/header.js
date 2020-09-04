@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default MyHeader ({ currentUser }) => {
+export default ({ currentUser }) => {
   const links = [
     !currentUser && { label: "Sign Up", href: "/auth/signup" },
     !currentUser && { label: "Sign In", href: "/auth/signin" },
