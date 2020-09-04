@@ -114,7 +114,19 @@ kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=<your stri
 PS:. You must create a stripe account -> www.stripe.com. After that you can create you stripe secret in Developers/API Keys in the menubar.
 
 #### Setup Ingress
+
+- Add helm repository 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.35.0/deploy/static/provider/do/deploy.yaml
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+```
+
+- Install ingress controller
+```sh
+ helm install nginx-ingress stable/nginx-ingress --set controller.publishService.enabled=true
+ ```
+ 
+ - Apply k8s-prod ingress file
+```sh
+kubectl apply infra/k8s-prod
 ```
 
