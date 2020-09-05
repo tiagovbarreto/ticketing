@@ -73,6 +73,18 @@ See also official docs:
 
 https://kubernetes.io/docs/tasks/tools/install-minikube/
 
+#### Create secrets
+The secrets are used in the payment service. Look in to payments-deploy.yml file.
+- jwt-secret
+```sh
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=<your jwt secret>
+```
+- stripe-secret
+```sh
+kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=<your stripe secret>
+```
+PS:. You must create a stripe account -> www.stripe.com. After that you can create you stripe secret in Developers/API Keys in the menubar.
+
 ## Deploy setup to Digital Ocean
 
 ### Install doctl 
