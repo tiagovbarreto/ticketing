@@ -15,6 +15,13 @@ spec:
       containers:
         - name: client
           image: tiagovalentimbarreto/ticketing-client
+          env:
+            - name: ENV_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: ENV_NAME
+                  name: ticketing-config
+
 ---
 apiVersion: v1
 kind: Service
