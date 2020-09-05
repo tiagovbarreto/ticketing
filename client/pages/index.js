@@ -35,7 +35,6 @@ const IndexPage = ({ currentUser, tickets }) => {
 
 IndexPage.getInitialProps = async (context, client, currentUser) => {
   const { data } = await client.get("/api/tickets");
-
   return { tickets: data };
 };
 
