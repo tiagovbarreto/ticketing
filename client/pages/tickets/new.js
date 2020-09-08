@@ -36,7 +36,7 @@ const NewTicket = () => {
       <h1>Create Ticket</h1>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label>Title</label>
+          <label>Titlex</label>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
