@@ -63,11 +63,10 @@ Check your installation:
 $ minikube version
 ```
 
+Start Minikube:
 ```sh
-$ Start Minikube:
-```
 minikube start
-
+```
 
 See also official docs:
 
