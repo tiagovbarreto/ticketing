@@ -37,6 +37,7 @@ List of features ready and TODOs for future development
 
 To-do list:
 * Improve frontend web application layout and usability.
+* Document API
 
 ## Technologies
 * React - https://reactjs.org/
