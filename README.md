@@ -8,14 +8,14 @@ A web application for sell tickets
 * [Technologies](#technologies)
 * [Architecture](#architecture)
 * [Startup](#startup)
-* [Deploy Digital Ocean](#deploy)
 * [Tests](#tests)
+* [Deploy Digital Ocean](#deploy)
 * [Usefull commands](#usefull-commands)
 * [Status](#status)
 * [Contact](#contact)
 
 ## About
-The intention of doing this project was to understand how to develop fullstack application microsevice architecture using React, Nuxt, Node, Typescript and Kubernets.
+The intention of doing this project was to understand how to develop a fullstack application based on microsevices architecture using React, Nuxt, Node, Typescript and Kubernets.
 
 ## Inspiration
 The knowledge was acquired in Stephen Grider's Microservices with Node JS and React Course. The objective of the course was to develop and deploy fullstack microservice applications following best practices using React, Next, Node.js, TypeScript and Kubernets.
@@ -137,6 +137,13 @@ kubectl create secret generic jwt-secret --from-literal=JWT_KEY=<your jwt secret
 kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=<your stripe secret>
 ```
 PS:. You must create a stripe account -> www.stripe.com. After that you can create you stripe secret in Developers/API Keys in the menubar.
+
+## Tests
+#### To run test
+Every project have an npm test script that could be started using the command above inside the container:
+```sh
+npm run test
+```
 
 ## Deploy Digital Ocean
 
