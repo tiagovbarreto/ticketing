@@ -1,5 +1,5 @@
 # Ticketing
-A web application for sell tickets
+A application for sell tickets
 
 ## Table of contents
 * [About](#about)
