@@ -3,18 +3,24 @@ A web application for sell tickets
 
 ## Table of contents
 * [About](#about)
+* [Inspiration](#inspiration)
 * [Features](#features)
 * [Technologies](#technologies)
+* [Architecture](#architecture)
 * [Startup](#startup)
+* [Deploy Digital Ocean](#deploy)
 * [Tests](#tests)
-* [Documentation](#documentation)
 * [Usefull commands](#usefull-commands)
 * [Status](#status)
-* [Inspiration](#inspiration)
 * [Contact](#contact)
 
 ## About
 The intention of doing this project was to understand how to develop fullstack application microsevice architecture using React, Nuxt, Node, Typescript and Kubernets.
+
+## Inspiration
+The knowledge was acquired in Stephen Grider's Microservices with Node JS and React Course. The objective of the course was to develop and deploy fullstack microservice applications following best practices using React, Next, Node.js, TypeScript and Kubernets.
+
+Thank you a lot Stephen!!!
 
 ## Features
 List of features ready and TODOs for future development
@@ -43,6 +49,7 @@ To-do list:
 * Kubernetes - https://kubernetes.io/
 
 ## Architecture
+![architecture](./diagrams/ticketing-architecture-overview.png)
 
 
 ## Startup
@@ -129,7 +136,7 @@ kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=<your stri
 ```
 PS:. You must create a stripe account -> www.stripe.com. After that you can create you stripe secret in Developers/API Keys in the menubar.
 
-## Deploy setup to Digital Ocean
+## Deploy Digital Ocean
 
 ### Install doctl 
 doctl can be installed via snap on ubuntu. See also official docs: https://github.com/digitalocean/doctl
