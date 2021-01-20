@@ -1,6 +1,51 @@
-# ticketing
+# Ticketing
+A web application to sell tickets
 
-## Local environment setup
+## Table of contents
+* [About](#about)
+* [Features](#features)
+* [Technologies](#technologies)
+* [Startup](#startup)
+* [Tests](#tests)
+* [Documentation](#documentation)
+* [Usefull commands](#usefull-commands)
+* [Status](#status)
+* [Inspiration](#inspiration)
+* [Contact](#contact)
+
+## About
+The intention of doing this project was to understand how to develop fullstack application microsevice architecture using React, Nuxt, Node, Typescript and Kubernets.
+
+## Features
+List of features ready and TODOs for future development
+* Signup
+* Signin
+* Signout
+* Create ticket
+* Update ticket
+* Search tickets
+* Create order
+* Update order
+* Search orders
+* Create payments using stripe
+* Order expiration controll
+
+To-do list:
+* Improve frontend web application layout and usability.
+
+## Technologies
+* React - https://reactjs.org/
+* Next - https://nextjs.org/
+* Node - https://nodejs.org/en/
+* Typescript - https://www.typescriptlang.org/
+* Jest - https://jestjs.io/
+* MongoDB - https://www.mongodb.com/
+* Kubernetes - https://kubernetes.io/
+
+## Architecture
+
+
+## Startup
 
 ### Minikube Setup on Linux
 
