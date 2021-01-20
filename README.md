@@ -46,7 +46,9 @@ To-do list:
 * Typescript - https://www.typescriptlang.org/
 * Jest - https://jestjs.io/
 * MongoDB - https://www.mongodb.com/
+* Redis - https://redis.io/
 * Kubernetes - https://kubernetes.io/
+* Skaffold - https://skaffold.dev/
 
 ## Architecture
 ![architecture](./diagrams/ticketing-architecture-overview.png)
@@ -192,4 +194,8 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```sh
 kubectl apply infra/k8s-prod
 ```
+## Status
+Project is: _finished_
 
+## Contact
+Created by tiagovalentim@gmail.com - feel free to contact me!
