@@ -9,7 +9,7 @@ A web application for sell tickets
 * [Architecture](#architecture)
 * [Startup](#startup)
 * [Tests](#tests)
-* [Deploy Digital Ocean](#deploy)
+* [Deploy Digital Ocean](#deploy-digital-ocean)
 * [Usefull commands](#usefull-commands)
 * [Status](#status)
 * [Contact](#contact)
