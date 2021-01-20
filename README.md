@@ -53,7 +53,6 @@ To-do list:
 ## Architecture
 ![architecture](./diagrams/ticketing-architecture-overview.png)
 
-
 ## Startup
 
 ### Minikube Setup on Linux
@@ -140,7 +139,7 @@ PS:. You must create a stripe account -> www.stripe.com. After that you can crea
 
 ## Tests
 #### To run test
-Every project have an npm test script that could be started using the command above inside the container:
+Every project has a npm test script that could be started using the command inside the container:
 ```sh
 npm run test
 ```
