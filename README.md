@@ -38,6 +38,7 @@ List of features ready and TODOs for future development
 To-do list:
 * Improve frontend web application layout and usability.
 * Document API
+* Apply MVC pattern
 
 ## Technologies
 * React - https://reactjs.org/
