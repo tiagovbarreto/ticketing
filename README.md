@@ -3,7 +3,6 @@ An application for sell tickets.
 
 ## Table of contents
 * [About](#about)
-* [Inspiration](#inspiration)
 * [Features](#features)
 * [Technologies](#technologies)
 * [Architecture](#architecture)
@@ -15,11 +14,6 @@ An application for sell tickets.
 
 ## About
 The intention of doing this project was to understand how to develop a fullstack application based on microsevices architecture using React, Nuxt, Node, Typescript and Kubernets.
-
-## Inspiration
-The knowledge was acquired in Stephen Grider's Microservices with Node JS and React Course. The objective of the course was to develop and deploy fullstack microservice applications following best practices using React, Next, Node.js, TypeScript and Kubernets.
-
-Thank you a lot Stephen!!!
 
 ## Features
 List of features ready and TODOs for future development
